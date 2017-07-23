@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, ToastController} from "ionic-angular";
 import {LoginResponse} from "../../models/login-response.interface";
+import {FirebaseService} from "../../providers/firebase.serivce";
+import {User} from "firebase/app";
 
 
 @IonicPage()
@@ -11,7 +13,7 @@ import {LoginResponse} from "../../models/login-response.interface";
 })
 export class LoginPage {
 
-  constructor(private toastController : ToastController,private navCtrl:NavController) {
+  constructor(private toastController : ToastController,private navCtrl:NavController,private firebaseService: FirebaseService) {
   }
 
   login(event : LoginResponse)
@@ -22,7 +24,12 @@ export class LoginPage {
         message : "Welcome to Let's Chat, "+event.result.email,
         duration:3000
       }).present();
-     this.navCtrl.setRoot('EditProfilePage');
+
+      this.firebaseService.getProfile(<User>event.result).subscribe(
+        profile=>{
+          profile.val() ? this.navCtrl.setRoot('TabsPage') : this.navCtrl.setRoot('EditProfilePage');
+        }
+      );
     }
     else {
       this.toastController.create({

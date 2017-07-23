@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, ToastController} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -8,11 +8,21 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 })
 export class EditProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, private toastCtrl:ToastController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EditProfilePage');
+  editProfile(event :Boolean)
+  {
+    if(event)
+    {
+      this.navCtrl.setRoot('TabsPage');
+    }
+    else {
+      this.toastCtrl.create({
+        message:'Something went wrong',
+        duration:3000
+      }).present();
+    }
   }
 
 }
