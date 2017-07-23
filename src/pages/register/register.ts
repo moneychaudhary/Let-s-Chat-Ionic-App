@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage} from 'ionic-angular';
+import {IonicPage, ToastController} from 'ionic-angular';
 
 
 
@@ -11,7 +11,24 @@ import {IonicPage} from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor() {
+  constructor(private toastController:ToastController) {
+  }
+
+  register(event : any)
+  {
+    if (!event.error)
+    {
+      this.toastController.create({
+        message : "Account Created:"+event.result.email,
+        duration:3000
+      }).present();
+    }
+    else {
+      this.toastController.create({
+        message : event.error.message,
+        duration:3000
+      }).present();
+    }
   }
 
 }

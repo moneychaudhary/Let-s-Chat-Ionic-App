@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {Account} from "../../models/account.interface";
-import {AngularFireAuth} from "angularfire2/auth";
 import {LoginResponse} from "../../models/login-response.interface";
+import {AuthSerivce} from "../../providers/auth/auth.serivce";
 
 @Component({
   selector: 'app-login-form',
@@ -15,26 +15,13 @@ export class LoginFormComponent {
 
   @Output() loginStatus: EventEmitter<LoginResponse>;
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private authService: AuthSerivce) {
     this.loginStatus = new EventEmitter<LoginResponse>();
   }
 
 
   async onLogin() {
-    try {
-      const result: LoginResponse = {
-        result: await this.afAuth.auth.signInWithEmailAndPassword(
-          this.account.email,
-          this.account.password)
-      };
+      const result: LoginResponse = await this.authService.signInWithEmailandPassword(this.account);
       this.loginStatus.emit(result);
-    }
-    catch (e) {
-      const err:LoginResponse = {
-        error: e
-      };
-      this.loginStatus.emit(err);
-    }
-
   }
 }

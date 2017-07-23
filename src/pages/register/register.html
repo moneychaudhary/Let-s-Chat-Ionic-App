@@ -17,7 +17,5 @@
 
   <img src="assets/img/logo-image.png" alt="logo" class="logo">
 
-  <app-register-form></app-register-form>
-
-
+  <app-register-form (registerStatus)="register($event)"></app-register-form>
 </ion-content>
