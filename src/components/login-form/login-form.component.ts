@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {Account} from "../../models/account.interface";
 import {LoginResponse} from "../../models/login-response.interface";
-import {AuthSerivce} from "../../providers/auth/auth.serivce";
+import {AuthService} from "../../providers/auth.serivce";
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +15,7 @@ export class LoginFormComponent {
 
   @Output() loginStatus: EventEmitter<LoginResponse>;
 
-  constructor(private authService: AuthSerivce) {
+  constructor(private authService: AuthService) {
     this.loginStatus = new EventEmitter<LoginResponse>();
   }
 

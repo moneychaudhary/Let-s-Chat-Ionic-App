@@ -6,8 +6,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import {AngularFireModule} from "angularfire2";
-import {AuthSerivce} from '../providers/auth/auth.serivce';
+import {AuthService} from '../providers/auth.serivce';
 import {AngularFireAuthModule} from "angularfire2/auth";
+import {FirebaseService} from "../providers/firebase.serivce";
+import {AngularFireDatabaseModule} from "angularfire2/database";
 
 let firebaseConfig = {
   apiKey: "AIzaSyDzgC5gopEz2JIFzfbLK7nXnv_yOmIBqOE",
@@ -26,7 +28,8 @@ let firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +39,8 @@ let firebaseConfig = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthSerivce
+    AuthService,
+    FirebaseService
   ]
 })
 export class AppModule {}

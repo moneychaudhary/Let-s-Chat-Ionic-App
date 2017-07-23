@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {Profile} from "../../models/profile.interface";
+import {FirebaseService} from "../../providers/firebase.serivce";
+import {AuthService} from "../../providers/auth.serivce";
+import {Subscription} from "rxjs/Subscription";
+import {$t} from "@angular/compiler/src/chars";
+import {User} from "firebase/app";
 
 /**
  * Generated class for the EditProfieFormComponent component.
@@ -11,16 +16,30 @@ import {Profile} from "../../models/profile.interface";
   selector: 'app-edit-profile-form',
   templateUrl: 'edit-profile-form.component.html'
 })
-export class EditProfileFormComponent {
+export class EditProfileFormComponent implements OnDestroy{
 
 
   profile  = {} as Profile;
-  constructor() {
+  private authenticatedUser$ : Subscription;
+  private authenticateUser:User;
+  constructor(private firebaseService : FirebaseService, private authService : AuthService) {
+    this.authenticatedUser$ = this.authService.getAuthenticatedUser().subscribe(
+      (user:User)=> this.authenticateUser = user
+    );
+  }
+
+  async saveProfile()
+  {
+    if (this.authenticateUser)
+    {
+      const result = await this.firebaseService.saveProfile(this.authenticateUser,this.profile);
+      console.log(result);
+    }
 
   }
 
-  saveProfile()
+  ngOnDestroy()
   {
-
+    this.authenticatedUser$.unsubscribe();
   }
 }

@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "angularfire2/auth";
-import {LoginResponse} from "../../models/login-response.interface";
-import {Account} from "../../models/account.interface";
+import {LoginResponse} from "../models/login-response.interface";
+import {Account} from "../models/account.interface";
 
 
 @Injectable()
-export class AuthSerivce {
+export class AuthService {
 
   constructor(public afAuth: AngularFireAuth) {
   }
 
+  getAuthenticatedUser()
+  {
+    return this.afAuth.authState;
+  }
   async signInWithEmailandPassword(account:Account)
   {
     try{
