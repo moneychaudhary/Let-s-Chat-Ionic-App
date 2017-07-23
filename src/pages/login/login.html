@@ -10,7 +10,7 @@
 
   <img src="assets/img/logo-image.png" alt="logo" class="logo">
 
-  <app-login-form></app-login-form>
+  <app-login-form (loginStatus)="login($event)"></app-login-form>
 
 
 </ion-content>

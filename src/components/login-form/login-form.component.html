@@ -11,7 +11,7 @@
   </ion-card-content>
   <ion-row padding>
     <ion-col >
-      <button ion-button block (click)="navigationToPage('RegisterPage')">Sign Up</button>
+      <button ion-button block [navPush]="registerPage">Sign Up</button>
     </ion-col>
     <ion-col>
       <button ion-button block (click)="onLogin()">Login</button>
