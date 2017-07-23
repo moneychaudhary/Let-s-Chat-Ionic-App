@@ -5,12 +5,7 @@ import {AuthService} from "../../providers/auth.serivce";
 import {Subscription} from "rxjs/Subscription";
 import {User} from "firebase/app";
 
-/**
- * Generated class for the EditProfieFormComponent component.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- * for more info on Angular Components.
- */
+
 @Component({
   selector: 'app-edit-profile-form',
   templateUrl: 'edit-profile-form.component.html'

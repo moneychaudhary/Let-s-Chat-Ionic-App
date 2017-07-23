@@ -10,6 +10,7 @@ import {AuthService} from '../providers/auth.serivce';
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {FirebaseService} from "../providers/firebase.serivce";
 import {AngularFireDatabaseModule} from "angularfire2/database";
+import {FormsModule} from "@angular/forms";
 
 let firebaseConfig = {
   apiKey: "AIzaSyDzgC5gopEz2JIFzfbLK7nXnv_yOmIBqOE",
@@ -26,6 +27,7 @@ let firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
