@@ -4,38 +4,41 @@
       <ion-item>
         <ion-label floating>Email</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" formControlName="email"
-                   [ngClass]="{'invalid' : registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty}">
         </ion-input>
       </ion-item>
 
       <div *ngIf="registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty" padding>
-        <span class="global-error-message" *ngIf="registerFormGroup.controls.email.hasError('required'); else invalidEmail">Email is required.</span>
-        <ng-template #invalidEmail><span class="global-error-message">Email is not valid.</span> </ng-template>
+        <span class="global-error-message"
+              *ngIf="registerFormGroup.controls.email.hasError('required'); else invalidEmail">Email is required.</span>
+        <ng-template #invalidEmail><span class="global-error-message">Email is not valid.</span></ng-template>
       </div>
 
       <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="password" formControlName="password"
-                   [ngClass]="{'invalid' : registerFormGroup.controls.password.invalid&&registerFormGroup.controls.password.dirty}"></ion-input>
+        <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
 
       <div *ngIf="registerFormGroup.controls.password.invalid&&registerFormGroup.controls.password.dirty" padding>
-        <span class="global-error-message" *ngIf="registerFormGroup.controls.password.hasError('required'); else invalidPassword">Password is required.</span>
-        <ng-template #invalidPassword><span class="global-error-message">Password must contain atleast 6 characters.</span> </ng-template>
+        <span class="global-error-message"
+              *ngIf="registerFormGroup.controls.password.hasError('required'); else invalidPassword">Password is required.</span>
+        <ng-template #invalidPassword><span
+          class="global-error-message">Password must contain atleast 6 characters.</span></ng-template>
       </div>
 
 
       <ion-item>
         <ion-label floating>Confirm Password</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" formControlName="confirmPassword"
-                   [ngClass]="{'invalid' : registerFormGroup.controls.confirmPassword.invalid&&registerFormGroup.controls.confirmPassword.dirty}"
         ></ion-input>
       </ion-item>
 
 
-      <div *ngIf="registerFormGroup.controls.confirmPassword.invalid&&registerFormGroup.controls.confirmPassword.dirty" padding>
-        <span class="global-error-message" *ngIf="registerFormGroup.controls.confirmPassword.hasError('required'); else invalidConfrimPassword">Confrim password is required.</span>
-        <ng-template #invalidConfrimPassword><span class="global-error-message">Password does not match.</span> </ng-template>
+      <div *ngIf="registerFormGroup.controls.confirmPassword.invalid&&registerFormGroup.controls.confirmPassword.dirty"
+           padding>
+        <span class="global-error-message"
+              *ngIf="registerFormGroup.controls.confirmPassword.hasError('required'); else invalidConfrimPassword">Confirm password is required.</span>
+        <ng-template #invalidConfrimPassword><span class="global-error-message">Password does not match.</span>
+        </ng-template>
       </div>
 
     </ion-card-content>
