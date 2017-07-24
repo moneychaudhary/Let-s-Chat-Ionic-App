@@ -7,4 +7,11 @@
       <p>{{message.lastMessage}}</p>
     </ion-item>
   </ion-list>
+
+  <ion-fab right bottom margin>
+    <button ion-fab icon-only [navPush]="searchUserPage">
+      <ion-icon name="text"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Profile} from "../../models/profile.interface";
 import {FirebaseService} from "../../providers/firebase.serivce";
 import {AuthService} from "../../providers/auth.serivce";
@@ -10,11 +10,19 @@ import {User} from "firebase/app";
   selector: 'app-edit-profile-form',
   templateUrl: 'edit-profile-form.component.html'
 })
-export class EditProfileFormComponent implements OnDestroy{
+export class EditProfileFormComponent implements OnInit,OnDestroy{
+
+
+  ngOnInit(): void {
+    if (!this.profile)
+    {
+      this.profile = {} as Profile;
+    }
+  }
 
   @Output() editProfileResult : EventEmitter<Boolean>;
 
-  profile  = {} as Profile;
+  @Input() profile:Profile;
   private authenticatedUser$ : Subscription;
   private authenticateUser:User;
   constructor(private firebaseService : FirebaseService, private authService : AuthService) {

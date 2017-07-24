@@ -10,8 +10,8 @@ import {Message} from "../../models/message.interface";
 })
 export class InboxPage {
 
-
   messageList:Message[] = MESSAGE_LIST;
+  searchUserPage:string='SearchUserPage';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

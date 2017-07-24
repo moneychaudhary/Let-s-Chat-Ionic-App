@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Profile} from "../../models/profile.interface";
 @IonicPage()
 
 @Component({
@@ -8,9 +9,22 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  existingProfile:Profile;
+
+  constructor(public navCtrl: NavController) {
   }
 
+  getExistingProfile(existingProfile:Profile)
+  {
+    this.existingProfile=existingProfile;
+  }
 
+  navigateToEditProfile()
+  {
+    this.navCtrl.push('EditProfilePage',{
+      existingProfile : this.existingProfile,
+      wantBack:true
+    })
+  }
 
 }

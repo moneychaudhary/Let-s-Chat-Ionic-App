@@ -34,4 +34,16 @@ export class FirebaseService {
     }
 
   }
+
+   searchUser(firstName:string)
+  {
+    const query = this.firbaseDatabase.list('/profile',{
+      query:{
+        orderByChild:'firstName',
+        equalTo:firstName
+      }
+    });
+
+    return query.take(1);
+  }
 }

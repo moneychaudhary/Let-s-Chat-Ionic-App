@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {Profile} from "../../models/profile.interface";
 
 @IonicPage()
 @Component({
@@ -8,14 +9,24 @@ import {IonicPage, NavController, ToastController} from 'ionic-angular';
 })
 export class EditProfilePage {
 
-  constructor(public navCtrl: NavController, private toastCtrl:ToastController) {
+  profile = {} as Profile;
+  private sendBack:Boolean = false;
+
+  constructor(private navParams: NavParams, private toastCtrl:ToastController,private navCtrl:NavController ) {
+    this.profile =  this.navParams.get('existingProfile');
+    this.sendBack = this.navParams.get('wantBack');
   }
 
   editProfile(event :Boolean)
   {
     if(event)
     {
-      this.navCtrl.setRoot('TabsPage');
+      if (this.sendBack)
+      {
+        this.navCtrl.pop();
+      }else {
+        this.navCtrl.setRoot('TabsPage');
+      }
     }
     else {
       this.toastCtrl.create({

@@ -1,5 +1,5 @@
 <!--
-  Generated template for the EditProfilePage page.
+  Generated template for the SearchUserPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,13 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Edit Profile</ion-title>
+    <ion-title>Select User</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-  <app-edit-profile-form (editProfileResult)="editProfile($event)" [profile]="profile"></app-edit-profile-form>
+<app-profile-search (selectedProfileEvent)="openChat($event)"></app-profile-search>
 </ion-content>
