@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FirebaseService} from "../../providers/firebase.serivce";
 import {AuthService} from "../../providers/auth.serivce";
-import {User} from "firebase/app";
 import {Profile} from "../../models/profile.interface";
 import {Loading, LoadingController} from "ionic-angular";
 
@@ -19,15 +18,11 @@ export class ProfileViewComponent implements OnInit{
 
   ngOnInit(): void {
     this.loading.present();
-    this.authService.getAuthenticatedUser().subscribe((user:User)=>
+    this.firebaseService.getAuthenticatedUserProfile().subscribe((profile)=>
     {
-
-      this.firebaseService.getProfile(user).subscribe((profile)=>{
-        this.profile = <Profile>profile.val();
-        this.profile.email = user.email;
-        this.existingProfile.emit(this.profile);
-        this.loading.dismiss();
-       });
+      this.profile = <Profile>profile.val();
+      this.existingProfile.emit(this.profile);
+      this.loading.dismiss();
     });
   }
 

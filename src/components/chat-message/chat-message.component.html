@@ -1,0 +1,13 @@
+<ion-item *ngIf="chatIndex%2 === 0;else odd">
+  <ion-avatar item-left><img src="assets/img/avatar.png"></ion-avatar>
+  <h2>Money</h2>
+  <p></p>
+</ion-item>
+<ng-template #odd>
+  <ion-item class="align-right">
+    <ion-avatar item-right><img src="assets/img/avatar.png"></ion-avatar>
+    <h2>Robin</h2>
+    <p></p>
+  </ion-item>
+</ng-template>
+

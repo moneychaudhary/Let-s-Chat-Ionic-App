@@ -5,6 +5,8 @@ import {RegisterFormComponent} from "./register-form/register-form.component";
 import {EditProfileFormComponent} from "./edit-profie-form/edit-profile-form.component";
 import {ProfileViewComponent} from "./profile-view/profile-view.component";
 import {ProfileSearchComponent} from "./profile-search/profile-search.component";
+import {SendMessageBoxComponent} from "./send-message-box/send-message-box.component";
+import {ChatMessageComponent} from "./chat-message/chat-message.component";
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {ProfileSearchComponent} from "./profile-search/profile-search.component"
     RegisterFormComponent,
     EditProfileFormComponent,
     ProfileViewComponent,
-    ProfileSearchComponent
+    ProfileSearchComponent,
+    SendMessageBoxComponent,
+    ChatMessageComponent
 
   ],
   imports: [
@@ -24,8 +28,9 @@ import {ProfileSearchComponent} from "./profile-search/profile-search.component"
     RegisterFormComponent,
     EditProfileFormComponent,
     ProfileViewComponent,
-    ProfileSearchComponent
-
+    ProfileSearchComponent,
+    SendMessageBoxComponent,
+    ChatMessageComponent
   ]
 })
 export class ComponentsModule {}

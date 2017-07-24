@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, ToastController} from "ionic-angular";
 import {LoginResponse} from "../../models/login-response.interface";
 import {FirebaseService} from "../../providers/firebase.serivce";
-import {User} from "firebase/app";
 
 
 @IonicPage()
@@ -20,7 +19,7 @@ export class LoginPage {
   {
     if (!event.error)
     {
-      this.firebaseService.getProfile(<User>event.result).subscribe(
+      this.firebaseService.getAuthenticatedUserProfile().subscribe(
         profile=>{
           profile.val() ? this.navCtrl.setRoot('TabsPage') : this.navCtrl.setRoot('EditProfilePage');
         }
