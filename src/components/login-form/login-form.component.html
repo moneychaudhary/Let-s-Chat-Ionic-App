@@ -15,7 +15,7 @@
       <ion-item>
         <ion-label floating>Password</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" formControlName="password"
-                   [ngClass]="{'invalid' : loginFormGroup.controls.email.invalid&&loginFormGroup.controls.email.dirty}">
+                   [ngClass]="{'invalid' : loginFormGroup.controls.password.invalid&&loginFormGroup.controls.password.dirty}">
         </ion-input>
       </ion-item>
 

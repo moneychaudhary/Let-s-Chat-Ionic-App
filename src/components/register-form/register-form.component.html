@@ -13,7 +13,7 @@
       <ion-item>
         <ion-label floating>Password</ion-label>
         <ion-input type="password" formControlName="password"
-                   [ngClass]="{'invalid' : registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty}"></ion-input>
+                   [ngClass]="{'invalid' : registerFormGroup.controls.password.invalid&&registerFormGroup.controls.password.dirty}"></ion-input>
       </ion-item>
       <div *ngIf="registerFormGroup.controls.password.invalid&&registerFormGroup.controls.password.dirty" padding>
         <span class="global-error-message">Password must be atleast 6 characters.</span>
@@ -21,7 +21,7 @@
       <ion-item>
         <ion-label floating>Confirm Password</ion-label>
         <ion-input type="password" [(ngModel)]="account.password" formControlName="confirmPassword"
-                   [ngClass]="{'invalid' : registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty}"
+                   [ngClass]="{'invalid' : registerFormGroup.controls.confirmPassword.invalid&&registerFormGroup.controls.confirmPassword.dirty}"
         ></ion-input>
       </ion-item>
       <div *ngIf="registerFormGroup.controls.confirmPassword.invalid&&registerFormGroup.controls.confirmPassword.dirty"
