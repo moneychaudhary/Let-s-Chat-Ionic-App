@@ -1,21 +1,38 @@
-<ion-card>
-  <ion-card-content>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="email" [(ngModel)]="account.email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Confirm Password</ion-label>
-      <ion-input type="password" [(ngModel)]="account.password"></ion-input>
-    </ion-item>
-  </ion-card-content>
-  <ion-row padding>
-    <ion-col text-right>
-      <button ion-button block  (click)="onSignUp()">Sign Up</button>
-    </ion-col>
-  </ion-row>
-</ion-card>
+<form [formGroup]="registerFormGroup" (ngSubmit)="onSignUp()">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" formControlName="email"
+                   [ngClass]="{'invalid' : registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty}">
+        </ion-input>
+      </ion-item>
+      <div *ngIf="registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty" padding>
+        <span class="global-error-message">Email is not valid.</span>
+      </div>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" formControlName="password"
+                   [ngClass]="{'invalid' : registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty}"></ion-input>
+      </ion-item>
+      <div *ngIf="registerFormGroup.controls.password.invalid&&registerFormGroup.controls.password.dirty" padding>
+        <span class="global-error-message">Password must be atleast 6 characters.</span>
+      </div>
+      <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" formControlName="confirmPassword"
+                   [ngClass]="{'invalid' : registerFormGroup.controls.email.invalid&&registerFormGroup.controls.email.dirty}"
+        ></ion-input>
+      </ion-item>
+      <div *ngIf="registerFormGroup.controls.confirmPassword.invalid&&registerFormGroup.controls.confirmPassword.dirty"
+           padding>
+        <span class="global-error-message">Password does not match.</span>
+      </div>
+    </ion-card-content>
+    <ion-row padding>
+      <ion-col text-right>
+        <button ion-button block type="submit" [disabled]="registerFormGroup.invalid">Sign Up</button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</form>

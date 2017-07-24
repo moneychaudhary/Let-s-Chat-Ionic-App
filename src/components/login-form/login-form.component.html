@@ -1,33 +1,41 @@
-<form #loginForm="ngForm" novalidate>
-<ion-card>
-  <ion-card-content>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="email" [(ngModel)]="account.email" name="email" #email="ngModel" required></ion-input>
-    </ion-item>
-    <div padding *ngIf="email.invalid||email.dirty">
-      <span class="global-error-message">Email is not valid.</span>
-    </div>
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"  [(ngModel)]="account.password" name="password" #password="ngModel" required></ion-input>
-    </ion-item>
-    <div padding *ngIf="password.invalid&&password.dirty">
-      <span class="global-error-message">Password is not valid.</span>
-    </div>
-  </ion-card-content>
-  <ion-row padding>
-    <ion-col >
-      <button ion-button block [navPush]="registerPage">Sign Up</button>
-    </ion-col>
-    <ion-col>
-      <button ion-button block (click)="onLogin()" [disabled]="loginForm.invalid">Login</button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col align-items-center>
-      <button ion-button block clear>Forget Password?</button>
-    </ion-col>
-  </ion-row>
-</ion-card>
+<form [formGroup]="loginFormGroup" (ngSubmit)="onLogin()">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [(ngModel)]="account.email"
+                   [ngClass]="{'invalid' : loginFormGroup.controls.email.invalid&&loginFormGroup.controls.email.dirty}"
+                   formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+      <div *ngIf="loginFormGroup.controls.email.invalid&&loginFormGroup.controls.email.dirty" padding>
+        <span class="global-error-message">Email is not valid.</span>
+      </div>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" formControlName="password"
+                   [ngClass]="{'invalid' : loginFormGroup.controls.email.invalid&&loginFormGroup.controls.email.dirty}">
+        </ion-input>
+      </ion-item>
+
+      <div *ngIf="loginFormGroup.controls.password.invalid&&loginFormGroup.controls.password.dirty" padding>
+        <span class="global-error-message">Password must be atleast 6 characters.</span>
+      </div>
+
+    </ion-card-content>
+    <ion-row padding>
+      <ion-col>
+        <button ion-button block [navPush]="registerPage">Sign Up</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block type="submit" [disabled]="loginFormGroup.invalid">Login</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col align-items-center>
+        <button ion-button block clear>Forget Password?</button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </form>
