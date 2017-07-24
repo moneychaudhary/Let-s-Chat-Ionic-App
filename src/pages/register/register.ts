@@ -19,7 +19,7 @@ export class RegisterPage {
     if (!event.error)
     {
       this.toastController.create({
-        message : "Account Created:"+event.result.email,
+        message : "Account created ! Login to continue",
         duration:3000
       }).present();
     }

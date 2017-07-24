@@ -20,11 +20,6 @@ export class LoginPage {
   {
     if (!event.error)
     {
-      this.toastController.create({
-        message : "Welcome to Let's Chat, "+event.result.email,
-        duration:3000
-      }).present();
-
       this.firebaseService.getProfile(<User>event.result).subscribe(
         profile=>{
           profile.val() ? this.navCtrl.setRoot('TabsPage') : this.navCtrl.setRoot('EditProfilePage');

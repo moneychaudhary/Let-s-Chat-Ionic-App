@@ -26,6 +26,7 @@ export class RegisterFormComponent {
 
   async onSignUp() {
       const result = await this.authService.signUpWithEmailandPassword(this.account);
+      this.registerFormGroup.reset();
       this.registerStatus.emit(result);
   }
 
