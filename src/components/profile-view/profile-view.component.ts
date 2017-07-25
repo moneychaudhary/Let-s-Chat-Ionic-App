@@ -23,6 +23,8 @@ export class ProfileViewComponent implements OnInit{
       this.profile = <Profile>profile.val();
       this.existingProfile.emit(this.profile);
       this.loading.dismiss();
+    },(error)=>{
+      this.loading.dismiss();
     });
   }
 

@@ -11,6 +11,8 @@ import {AngularFireAuthModule} from "angularfire2/auth";
 import {FirebaseService} from "../providers/firebase.serivce";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {FormsModule} from "@angular/forms";
+import {ChatService} from "../providers/chat.service";
+
 
 let firebaseConfig = {
   apiKey: "AIzaSyDzgC5gopEz2JIFzfbLK7nXnv_yOmIBqOE",
@@ -42,7 +44,8 @@ let firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    FirebaseService
+    FirebaseService,
+    ChatService
   ]
 })
 export class AppModule {}

@@ -1,13 +1,13 @@
-<ion-item *ngIf="chatIndex%2 === 0;else odd">
+<ion-item *ngIf="chatMessage.userToId == userId" no-lines="">
   <ion-avatar item-left><img src="assets/img/avatar.png"></ion-avatar>
-  <h2>Money</h2>
-  <p></p>
+  <h2>{{chatMessage?.userFromProfile.firstName}}{{chatMessage?.userFromProfile.lastName}}</h2>
+  <p>{{chatMessage?.content}}</p>
 </ion-item>
 <ng-template #odd>
-  <ion-item class="align-right">
+  <ion-item class="align-right" no-lines>
     <ion-avatar item-right><img src="assets/img/avatar.png"></ion-avatar>
-    <h2>Robin</h2>
-    <p></p>
+    <h2>{{chatMessage?.userToProfile.firstName}}{{chatMessage?.userToProfile.lastName}}</h2>
+    <p>{{chatMessage?.content}}</p>
   </ion-item>
 </ng-template>
 
