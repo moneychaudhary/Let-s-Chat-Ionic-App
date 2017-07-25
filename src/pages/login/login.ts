@@ -21,7 +21,7 @@ export class LoginPage {
     {
       this.firebaseService.getAuthenticatedUserProfile().subscribe(
         profile=>{
-          profile.val() ? this.navCtrl.setRoot('TabsPage') : this.navCtrl.setRoot('EditProfilePage');
+          this.navCtrl.setRoot('TabsPage');
         }
       );
     }

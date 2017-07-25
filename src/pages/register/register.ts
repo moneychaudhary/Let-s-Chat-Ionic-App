@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {IonicPage, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, ToastController} from 'ionic-angular';
+import {FirebaseService} from "../../providers/firebase.serivce";
 
 
 
@@ -11,17 +12,18 @@ import {IonicPage, ToastController} from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(private toastController:ToastController) {
+  constructor(private toastController:ToastController,private firebaseSerivce:FirebaseService,private navCtrl:NavController) {
   }
 
   register(event : any)
   {
     if (!event.error)
     {
-      this.toastController.create({
-        message : "Account created ! Login to continue",
-        duration:3000
-      }).present();
+      this.firebaseSerivce.getAuthenticatedUserProfile().subscribe(
+        profile=>{
+          this.navCtrl.setRoot('TabsPage');
+        }
+      );
     }
     else {
       this.toastController.create({

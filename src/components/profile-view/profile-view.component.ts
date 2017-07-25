@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FirebaseService} from "../../providers/firebase.serivce";
-import {AuthService} from "../../providers/auth.serivce";
 import {Profile} from "../../models/profile.interface";
 import {Loading, LoadingController} from "ionic-angular";
 
