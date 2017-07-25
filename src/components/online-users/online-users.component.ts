@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FirebaseService} from "../../providers/firebase.serivce";
 import {FirebaseListObservable} from "angularfire2/database";
-import {User} from "firebase/app";
 import {Profile} from "../../models/profile.interface";
 import {NavController} from "ionic-angular";
 

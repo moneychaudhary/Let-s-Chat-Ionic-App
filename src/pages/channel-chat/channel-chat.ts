@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavParams} from 'ionic-angular';
 import {Channel} from "../../models/channel.interface";
 import {ChatService} from "../../providers/chat.service";
 import {FirebaseListObservable} from "angularfire2/database";
@@ -15,7 +15,7 @@ export class ChannelChatPage {
   channel:Channel;
   channelMessage:FirebaseListObservable<ChannelMessage[]>
 
-  constructor(private chatService:ChatService,private navCtrl: NavController, private navParams: NavParams) {
+  constructor(private chatService:ChatService, private navParams: NavParams) {
     this.channel =  this.navParams.get('channel');
   }
 

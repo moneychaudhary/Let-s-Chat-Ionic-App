@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController} from 'ionic-angular';
 import {ChatService} from "../../providers/chat.service";
-import {Observable} from "rxjs/Observable";
 import {Channel} from "../../models/channel.interface";
 import {FirebaseListObservable} from "angularfire2/database";
 

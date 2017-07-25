@@ -1,5 +1,3 @@
-import {Profile} from "./profile.interface";
-
 export interface Message{
   userFromId:string;
   userFromProfile:{

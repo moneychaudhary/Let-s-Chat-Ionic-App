@@ -29,7 +29,7 @@ export class ProfileViewComponent implements OnInit{
   }
 
 
-  constructor(private firebaseService:FirebaseService, private authService:AuthService,private loadingCtrl:LoadingController) {
+  constructor(private firebaseService:FirebaseService,private loadingCtrl:LoadingController) {
     this.existingProfile =  new EventEmitter<Profile>();
     this.loading=  this.loadingCtrl.create({
       content:'Profile Loading...'
