@@ -21,7 +21,7 @@ export class RegisterPage {
     {
       this.firebaseSerivce.getAuthenticatedUserProfile().subscribe(
         profile=>{
-          this.navCtrl.setRoot('TabsPage');
+          this.navCtrl.setRoot('EditProfilePage');
         }
       );
     }

@@ -1,32 +1,6 @@
 <form [formGroup]="registerFormGroup" (ngSubmit)="onSignUp()">
   <ion-card>
     <ion-card-content>
-
-
-      <ion-item>
-        <ion-label floating>First Name</ion-label>
-        <ion-input type="email" [(ngModel)]="account.firstName" formControlName="firstName">
-        </ion-input>
-      </ion-item>
-
-      <div *ngIf="registerFormGroup.controls.firstName.invalid&&registerFormGroup.controls.firstName.dirty" padding>
-        <span class="global-error-message">First Name is required.</span>
-      </div>
-
-      <ion-item>
-        <ion-label floating>Last Name</ion-label>
-        <ion-input type="email" [(ngModel)]="account.lastName" formControlName="lastName">
-        </ion-input>
-      </ion-item>
-
-      <div *ngIf="registerFormGroup.controls.lastName.invalid&&registerFormGroup.controls.lastName.dirty" padding>
-        <span class="global-error-message">Last Name is required.</span>
-      </div>
-
-
-
-
-
       <ion-item>
         <ion-label floating>Email</ion-label>
         <ion-input type="email" [(ngModel)]="account.email" formControlName="email">

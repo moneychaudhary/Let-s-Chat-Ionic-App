@@ -2,7 +2,7 @@
   <img class="profile-view-image" src="assets/img/profile-placeholder.png">
 </div>
 
-<div *ngIf="profile">
+<div *ngIf="profile;else otherwise ">
   <ion-card>
     <ion-card-content>
       <ion-item>
@@ -24,4 +24,8 @@
     </ion-card-content>
   </ion-card>
 </div>
+
+<ng-template #otherwise>
+  <p text-center>Edit Your Profile for Start Chatting...</p>
+</ng-template>
 

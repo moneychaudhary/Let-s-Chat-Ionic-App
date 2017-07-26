@@ -1,4 +1,9 @@
-<ion-card>
+
+<div class="profile-view-container">
+  <img class="profile-view-image" src="assets/img/profile-placeholder.png">
+</div>
+
+<ion-card >
   <ion-card-content>
     <ion-item>
       <ion-label floating>First Name</ion-label>
@@ -15,10 +20,15 @@
       <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="profile.dateOfBirth"></ion-datetime>
     </ion-item>
 
+
+
   </ion-card-content>
 
-
+  <ion-row >
+    <ion-col text-right>
+      <button ion-button block  (click)="saveProfile()">Save</button>
+    </ion-col>
+  </ion-row>
 </ion-card>
-<button ion-button full="" (click)="saveProfile()">Save</button>
 
 

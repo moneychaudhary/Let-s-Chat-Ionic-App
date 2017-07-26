@@ -22,16 +22,12 @@ export class RegisterFormComponent {
       email : ['',Validators.compose([Validators.required,Validators.email])],
       password : ['',Validators.compose([Validators.required,Validators.minLength(6)])],
       confirmPassword : ['',Validators.compose([Validators.required,this.validatePasswordConfirmation.bind(this)])],
-      firstName : ['',Validators.compose([Validators.required])],
-      lastName : ['',Validators.compose([Validators.required])],
-
     });
   }
 
 
   async onSignUp() {
       const result = await this.authService.signUpWithEmailandPassword(this.account);
-
       this.registerFormGroup.reset();
       this.registerStatus.emit(result);
   }
