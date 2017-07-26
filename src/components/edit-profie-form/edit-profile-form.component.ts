@@ -45,13 +45,15 @@ export class EditProfileFormComponent implements OnInit, OnDestroy {
   async saveProfile() {
     if (this.authenticateUser) {
 
-      if (this.imageUrl)
+      if (!this.imageUrl)
       {
         this.firebaseService.saveProfile(this.authenticateUser,this.profile).then((result)=>{
           this.editProfileResult.emit(result);
+          console.log('caaled');
         });
       }
       else {
+        console.log('no caaled');
 
         let storageRef = firebase.storage().ref();
         // Create a timestamp as filename
