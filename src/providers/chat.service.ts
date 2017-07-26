@@ -30,14 +30,14 @@ export class ChatService{
 
   getChannelChatRef(channelKey:string)
   {
-    return this.database.list('channels-name/'+channelKey);
+    return this.database.list('channels-name/'+channelKey+'/data');
 
   }
 
 
   async sendChannelChatMessage(message:ChannelMessage,key:string)
   {
-    await this.database.list('channels-name/'+key).push(message);
+    await this.database.list('channels-name/'+key+'/data').push(message);
   }
 
   async sendChat(message:Message)

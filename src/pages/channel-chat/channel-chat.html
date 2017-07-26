@@ -15,26 +15,28 @@
 
 <ion-content padding>
 
-<ion-list no-lines>
-  <ion-row *ngFor="let message of channelMessage|async">
-    <ion-item class="align-right" *ngIf="message.userKey === userProfile.$key; else odd">
-      <h2>{{message?.firstName}}{{message?.lastName}}</h2>
-      <p>{{message?.content}}</p>
-    </ion-item>
-    <ng-template #odd>
-      <ion-item>
+  <ion-list >
+    <ion-row *ngFor="let message of channelMessage|async">
+
+      <ion-item class="align-right" *ngIf="message.userKey === userProfile.$key">
+        <ion-avatar item-right><img src="assets/img/avatar.png"></ion-avatar>
         <h2>{{message?.firstName}}{{message?.lastName}}</h2>
         <p>{{message?.content}}</p>
       </ion-item>
-    </ng-template>
-  </ion-row>
-</ion-list>
+
+      <ion-item *ngIf="message.userKey !== userProfile.$key">
+        <ion-avatar item-left><img src="assets/img/avatar.png"></ion-avatar>
+        <h2>{{message?.firstName}}{{message?.lastName}}</h2>
+        <p>{{message?.content}}</p>
+      </ion-item>
+    </ion-row>
+  </ion-list>
 
 
 </ion-content>
 
 <ion-footer>
-  <ion-list >
+  <ion-toolbar>
     <app-send-message-box (sendMessage)="sendMessage($event)"></app-send-message-box>
-  </ion-list>
+  </ion-toolbar>
 </ion-footer>

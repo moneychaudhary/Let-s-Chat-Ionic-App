@@ -33,9 +33,8 @@ export class AuthService {
   {
     try{
       return <LoginResponse>{
-        result : await this.afAuth.auth.createUserWithEmailAndPassword(account.email,account.password)
+        response : await this.afAuth.auth.createUserWithEmailAndPassword(account.email,account.password)
       };
-
     }catch (e)
     {
       return <LoginResponse>{
