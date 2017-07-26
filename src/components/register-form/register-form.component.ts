@@ -3,7 +3,6 @@ import {Account} from "../../models/account.interface";
 import {AuthService} from "../../providers/auth.serivce";
 import {LoginResponse} from "../../models/login-response.interface";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {FirebaseService} from "../../providers/firebase.serivce";
 
 @Component({
   selector: 'app-register-form',
@@ -16,7 +15,7 @@ export class RegisterFormComponent {
   registerFormGroup:FormGroup;
 
 
-  constructor(private authService: AuthService,private formBuilder:FormBuilder,private firebaseService:FirebaseService) {
+  constructor(private authService: AuthService,private formBuilder:FormBuilder) {
     this.registerStatus = new EventEmitter<LoginResponse>();
     this.registerFormGroup = this.formBuilder.group({
       email : ['',Validators.compose([Validators.required,Validators.email])],

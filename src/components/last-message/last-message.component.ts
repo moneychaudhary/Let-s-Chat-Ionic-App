@@ -14,6 +14,8 @@ export class LastMessageComponent implements OnInit{
 
   messageList$:Observable<Message[]>;
   userProfile = {}  as Profile;
+  fromImage:string;
+  toImage:string;
 
   ngOnInit(): void {
     this.messageList$ =  this.chatService.getLastMessagesForUser();
@@ -35,14 +37,17 @@ export class LastMessageComponent implements OnInit{
      selectedProfile = {
       $key: message.userToId,
       firstName: message.userToProfile.firstName,
-      lastName: message.userToProfile.lastName
+      lastName: message.userToProfile.lastName,
+       avatar:message.userToProfile.avatar,
     };
   }
   else {
       selectedProfile = {
         $key: message.userFromId,
         firstName: message.userFromProfile.firstName,
-        lastName: message.userFromProfile.lastName
+        lastName: message.userFromProfile.lastName,
+        avatar:message.userFromProfile.avatar,
+
       };
     }
 

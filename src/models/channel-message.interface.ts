@@ -1,4 +1,3 @@
-import {Profile} from "./profile.interface";
 
 export class ChannelMessage {
   content: string;

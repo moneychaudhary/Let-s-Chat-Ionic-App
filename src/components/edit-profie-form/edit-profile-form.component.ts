@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Profile} from "../../models/profile.interface";
 import {AuthService} from "../../providers/auth.serivce";
 import {Subscription} from "rxjs/Subscription";
@@ -76,6 +76,7 @@ export class EditProfileFormComponent implements OnInit, OnDestroy {
       mediaType: this.camera.MediaType.PICTURE,
     }).then((imageData) => {
       this.imageUrl = 'data:image/jpeg;base64,' + imageData;
+      this.profile.avatar = this.imageUrl;
     }, (err) => {
       console.log(err);
     });
