@@ -20,13 +20,13 @@
 
       <ion-item class="align-right" *ngIf="message.userKey === userProfile.$key">
         <ion-avatar item-right><img [src]=message.avatar></ion-avatar>
-        <h2>{{message?.firstName}}{{message?.lastName}}</h2>
+        <h2>{{message?.firstName}} {{message?.lastName}}</h2>
         <p>{{message?.content}}</p>
       </ion-item>
 
       <ion-item *ngIf="message.userKey !== userProfile.$key">
         <ion-avatar item-left><img [src]=message.avatar></ion-avatar>
-        <h2>{{message?.firstName}}{{message?.lastName}}</h2>
+        <h2>{{message?.firstName}} {{message?.lastName}}</h2>
         <p>{{message?.content}}</p>
       </ion-item>
     </ion-row>
