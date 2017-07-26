@@ -16,7 +16,7 @@ export class FirebaseService {
   constructor(private firbaseDatabase: AngularFireDatabase,private authService:AuthService) {
   }
 
-  getAuthenticatedUserProfile()
+    getAuthenticatedUserProfile()
   {
     return this.authService.getAuthenticatedUser().map(user => user.uid).
       mergeMap(uid => this.firbaseDatabase.object('/profile/'+uid,{preserveSnapshot:true}))
