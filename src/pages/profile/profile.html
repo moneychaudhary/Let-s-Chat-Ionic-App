@@ -3,11 +3,19 @@
 <app-profile-view (existingProfile)="getExistingProfile($event)"></app-profile-view>
 
   <ion-fab right bottom margin>
-    <button ion-fab icon-only  (click)="navigateToEditProfile()">
-      <ion-icon name="person-add"></ion-icon>
+    <button ion-fab icon-only color="danger" (click)="signOut()">
+      <ion-icon name="log-out"></ion-icon>
     </button>
   </ion-fab>
 
-  <button ion-button full (click)="signOut()" color="danger">Logout</button>
+  <ion-fab right bottom  style="margin-bottom: 80px; margin-right: 16px">
+
+    <button ion-fab icon-only  (click)="navigateToEditProfile()">
+      <ion-icon name="person-add"></ion-icon>
+    </button>
+</ion-fab>
+
+
+
 
 </ion-content>
