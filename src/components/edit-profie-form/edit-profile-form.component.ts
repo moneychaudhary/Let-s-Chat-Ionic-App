@@ -44,20 +44,28 @@ export class EditProfileFormComponent implements OnInit, OnDestroy {
 
   async saveProfile() {
     if (this.authenticateUser) {
-      let storageRef = firebase.storage().ref();
-      // Create a timestamp as filename
-      const filename = Math.floor(Date.now() / 1000);
 
-      // Create a reference to 'images/todays-date.jpg'
-      const imageRef = storageRef.child(`images/${filename}.jpg`);
-
-      imageRef.putString(this.imageUrl, firebase.storage.StringFormat.DATA_URL).then((snapshot)=> {
-        this.imageUrl = snapshot.downloadURL;
-        this.profile.avatar =  snapshot.downloadURL;
+      if (this.imageUrl)
+      {
         this.firebaseService.saveProfile(this.authenticateUser,this.profile).then((result)=>{
-         this.editProfileResult.emit(result);
-       });
-      });
+          this.editProfileResult.emit(result);
+        });
+      }
+      else {
+
+        let storageRef = firebase.storage().ref();
+        // Create a timestamp as filename
+        const filename = Math.floor(Date.now() / 1000);
+        // Create a reference to 'images/todays-date.jpg'
+        const imageRef = storageRef.child(`images/${filename}.jpg`);
+        imageRef.putString(this.imageUrl, firebase.storage.StringFormat.DATA_URL).then((snapshot)=> {
+          this.imageUrl = snapshot.downloadURL;
+          this.profile.avatar =  snapshot.downloadURL;
+          this.firebaseService.saveProfile(this.authenticateUser,this.profile).then((result)=>{
+            this.editProfileResult.emit(result);
+          });
+        });
+      }
     }
 
   }
