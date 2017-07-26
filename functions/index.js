@@ -40,5 +40,7 @@ exports.createProfile = functions.auth.user().onCreate(event => {
   admin.database().ref('/profile/' + user.uid).child('firstName').set('Anonymous');
   admin.database().ref('/profile/' + user.uid).child('lastName').set('User');
   admin.database().ref('/profile/' + user.uid).child('email').set(user.email);
+  admin.database().ref('/profile/' + user.uid).child('avatar').set('https://firebasestorage.googleapis.com/v0/b/lets-chat-2c103.appspot.com/o/images%2Fimage.png?alt=media&token=6013c7e9-7c94-4726-8467-7e2e80bba617');
+
 
 });

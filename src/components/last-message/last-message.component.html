@@ -2,12 +2,20 @@
 
   <ion-item-divider>Last Messages</ion-item-divider>
   <ion-item *ngFor="let message of messageList$ | async" (click)="navigateToMessage(message)">
-    <ion-avatar item-left>
-      <img src="assets/img/avatar.png">
-    </ion-avatar>
+
     <div *ngIf="userProfile">
-    <h2 *ngIf="userProfile.$key === message.userFromId ">{{message?.userToProfile?.firstName}} {{message?.userToProfile?.lastName}}</h2>
-    <h2 *ngIf="userProfile.$key === message.userToId ">{{message?.userFromProfile?.firstName}} {{message?.userFromProfile?.lastName}}</h2>
+      <div *ngIf="userProfile.$key === message.userFromId ">
+        <ion-avatar item-left>
+          <img [src]=message?.userToProfile?.avatar>
+        </ion-avatar>
+        <h2>{{message?.userToProfile?.firstName}} {{message?.userToProfile?.lastName}}</h2>
+      </div>
+      <div *ngIf="userProfile.$key === message.userToId | async ">
+        <h2>{{message?.userFromProfile?.firstName}} {{message?.userFromProfile?.lastName}}</h2>
+        <ion-avatar item-left>
+          <img [src]=message?.userFromProfile?.avatar>
+        </ion-avatar>
+      </div>
     <p>{{message?.content}}</p>
     </div>
   </ion-item>

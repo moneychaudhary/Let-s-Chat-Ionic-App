@@ -12,6 +12,8 @@ import {FirebaseService} from "../providers/firebase.serivce";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {FormsModule} from "@angular/forms";
 import {ChatService} from "../providers/chat.service";
+import {Camera} from "@ionic-native/camera";
+import {UtilProvider} from "../providers/util-provider";
 
 
 let firebaseConfig = {
@@ -19,7 +21,7 @@ let firebaseConfig = {
   authDomain: "lets-chat-2c103.firebaseapp.com",
   databaseURL: "https://lets-chat-2c103.firebaseio.com",
   projectId: "lets-chat-2c103",
-  storageBucket: "",
+  storageBucket: "lets-chat-2c103.appspot.com",
   messagingSenderId: "144672964471"
 };
 
@@ -45,7 +47,9 @@ let firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     FirebaseService,
-    ChatService
+    ChatService,
+    Camera,
+    UtilProvider
   ]
 })
 export class AppModule {}

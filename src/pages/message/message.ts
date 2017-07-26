@@ -43,11 +43,13 @@ export class MessagePage {
         userToProfile: {
           firstName: this.selectedProfile.firstName,
           lastName: this.selectedProfile.lastName,
+          avatar:this.selectedProfile.avatar,
         },
         userFromId: this.profile.$key,
         userFromProfile: {
           firstName: this.profile.firstName,
           lastName: this.profile.lastName,
+          avatar:this.profile.avatar,
         },
       };
       this.chatService.sendChat(message);

@@ -4,7 +4,7 @@
   <ion-row *ngFor="let user of onlineUsers | async" (click)="openChat(user)">
     <ion-item *ngIf="user.$key != userProfile.$key" >
       <ion-avatar item-left >
-        <img src="assets/img/avatar.png">
+        <img [src]="user.avatar">
       </ion-avatar>
       <h2>{{user.firstName}} {{user.lastName}}</h2>
     </ion-item>

@@ -9,6 +9,7 @@ import {SendMessageBoxComponent} from "./send-message-box/send-message-box.compo
 import {ChatMessageComponent} from "./chat-message/chat-message.component";
 import {OnlineUsersComponent} from "./online-users/online-users.component";
 import {LastMessageComponent} from "./last-message/last-message.component";
+import 'firebase/storage';
 
 
 @NgModule({

@@ -12,15 +12,18 @@ export class ProfileViewComponent implements OnInit{
 
   profile:Profile;
   loading:Loading;
+  imageUrl:String;
 
   @Output() existingProfile:EventEmitter<Profile>;
 
   ngOnInit(): void {
+    this.imageUrl = 'assets/img/image.png';
     this.loading.present();
     this.firebaseService.getAuthenticatedUserProfile().subscribe((profile)=>
     {
       this.profile = <Profile>profile.val();
-      this.existingProfile.emit(this.profile);
+      this.imageUrl = this.profile.avatar;
+        this.existingProfile.emit(this.profile);
       this.loading.dismiss();
     },(error)=>{
       this.loading.dismiss();

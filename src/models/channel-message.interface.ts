@@ -5,5 +5,6 @@ export class ChannelMessage {
   firstName: string;
   lastName: string;
   userKey:string;
+  avatar:string;
 }
 

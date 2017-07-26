@@ -36,7 +36,8 @@ export class ChannelChatPage {
         content:message,
         firstName:this.userProfile.firstName,
         lastName:this.userProfile.lastName,
-        userKey : this.userProfile.$key
+        userKey : this.userProfile.$key,
+        avatar:this.userProfile.avatar,
 
     };
 

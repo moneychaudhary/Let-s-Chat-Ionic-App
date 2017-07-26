@@ -5,7 +5,7 @@
 
   <ion-row *ngFor="let profile of profileList" (click)="selectProfile(profile)">
     <ion-item *ngIf="profile.$key != userProfile.$key" >
-        <ion-avatar item-left><img src="assets/img/avatar.png"></ion-avatar>
+        <ion-avatar item-left><img [src]=profile.avatar></ion-avatar>
         <h2>{{profile.firstName}} {{profile.lastName}}</h2>
       </ion-item>
   </ion-row>
