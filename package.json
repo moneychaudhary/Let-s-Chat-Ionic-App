@@ -25,6 +25,7 @@
         "@ionic-native/status-bar": "3.12.1",
         "@ionic/storage": "2.0.1",
         "ajv": "^5.2.2",
+        "angular-elastic": "^2.5.1",
         "angularfire2": "^4.0.0-rc.1",
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.7",

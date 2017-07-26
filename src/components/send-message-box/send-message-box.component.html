@@ -1,8 +1,11 @@
 <ion-row>
-  <ion-col col-9>
-    <ion-textarea placeholder="Enter your message..." [(ngModel)]="content" ></ion-textarea>
+  <ion-col col-10>
+    <ion-textarea rows="1" id="messageInputBox" placeholder="Send message"[(ngModel)]="content" (input)="change()" required></ion-textarea>
+    <!--<ion-textarea placeholder="Enter your message..."  ></ion-textarea>-->
   </ion-col>
-  <ion-col col-3>
-    <button ion-button clear (click)="send()">Send</button>
+  <ion-col col-2>
+    <button (click)="send()" ion-button full clear>
+        SEND
+    </button>
   </ion-col>
 </ion-row>

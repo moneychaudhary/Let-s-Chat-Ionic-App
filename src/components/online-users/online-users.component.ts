@@ -14,41 +14,39 @@ import {NavController} from "ionic-angular";
   selector: 'app-online-users',
   templateUrl: 'online-users.component.html'
 })
-export class OnlineUsersComponent implements OnInit{
+export class OnlineUsersComponent implements OnInit {
   ngOnInit(): void {
     this.setUserOnline();
     this.getOnlineUsers();
   }
 
-  onlineUsers:FirebaseListObservable<Profile[]>;
+  onlineUsers: FirebaseListObservable<Profile[]>;
+  userProfile = {} as Profile;
 
 
-  constructor(private firbaseService:FirebaseService,private navCtrl:NavController) {
+  constructor(private firbaseService: FirebaseService, private navCtrl: NavController) {
 
   }
 
 
-  setUserOnline()
-  {
-    this.firbaseService.getAuthenticatedUserProfile().subscribe(profile =>{
+  setUserOnline() {
+    this.firbaseService.getAuthenticatedUserProfile().subscribe(profile => {
 
-      this.firbaseService.setUserOnline(profile.val(),profile.key);
+      this.userProfile.$key = profile.key;
+      this.firbaseService.setUserOnline(profile.val(), profile.key);
     });
 
   }
 
 
-  getOnlineUsers()
-  {
-    this.onlineUsers =  this.firbaseService.getOnlineUsers();
-    console.log(this.onlineUsers);
+  getOnlineUsers() {
+    this.onlineUsers = this.firbaseService.getOnlineUsers();
   }
 
 
-  openChat(profile:Profile)
-  {
-    this.navCtrl.push('MessagePage',{
-      profile:profile
+  openChat(profile: Profile) {
+    this.navCtrl.push('MessagePage', {
+      profile: profile
     })
   }
 
